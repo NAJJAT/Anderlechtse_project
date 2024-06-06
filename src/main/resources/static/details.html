@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Article Details</title>
+    <th:block th:include="fragments/menu :: menu"></th:block>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${article.title}">Article Title</h1>
+    <p><strong>Category:</strong> <span th:text="${article.category}">Category</span></p>
+    <p><strong>Content:</strong></p>
+    <p th:text="${article.content}">Content</p>
+    <p><strong>Reporter:</strong> <span th:text="${article.reporterName}">Reporter Name</span></p>
+    <p><strong>Email:</strong> <span th:text="${article.reporterEmail}">Reporter Email</span></p>
+</div>
+<th:block th:include="fragments/footer :: footer"></th:block>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Index</title>
+    <th:block th:include="fragments/menu :: menu"></th:block>
+</head>
+<body>
+<div class="container">
+    <h1>Latest Articles</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Reporter Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="article : ${articles}">
+            <td th:text="${article.title}">Article Title</td>
+            <td th:text="${article.reporterName}">Reporter Name</td>
+            <td>
+                <a th:href="@{/details/{id}(id=${article.id})}" class="btn btn-primary">Details</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/new" class="btn btn-success">Add New Article</a>
+</div>
+<th:block th:include="fragments/footer :: footer"></th:block>
+</body>
+</html>
