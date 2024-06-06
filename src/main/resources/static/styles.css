@@ -1,0 +1,34 @@
+/* Navbar styles */
+.navbar {
+    background-color: #c027c5; /* Light gray background */
+    padding: 10px 20px; /* Add some padding to the navbar */
+    border-radius: 5px; /* Add some border radius for a softer look */
+}
+
+.navbar-brand {
+    font-size: 1.5rem; /* Larger font size for the brand */
+    font-weight: bold; /* Make the brand text bold */
+    color: #333; /* Darken the text color */
+    text-decoration: none; /* Remove underline */
+}
+
+.navbar-brand:hover {
+    color: #555; /* Darken the text color on hover */
+}
+
+.navbar-nav {
+    margin-left: auto; /* Push the nav items to the right */
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px; /* Add some margin between nav items */
+}
+
+.nav-link {
+    color: #333; /* Darken the text color */
+    text-decoration: none; /* Remove underline */
+}
+
+.nav-link:hover {
+    color: #007bff; /* Change text color on hover */
+}
