@@ -9,6 +9,7 @@ import project.dagonderwijsproject.Service.NewsArticleService;
 @SpringBootApplication
 public class DagonderwijsProjectApplication {
 
+
     public static void main(String[] args) {
         SpringApplication.run(DagonderwijsProjectApplication.class, args);
     }

@@ -3,6 +3,8 @@ package project.dagonderwijsproject.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import project.dagonderwijsproject.Modle.NewsArticle;
 import project.dagonderwijsproject.Service.NewsArticleService;
@@ -17,18 +19,13 @@ public class ArticleController {
     public String newArticle() {
         return "new";
     }
+
     @GetMapping("/about")
-        public String about() {
+    public String about() {
         return "about";
     }
-    /*
-    //post Object
-    @PostMapping("/save")
-    public NewsArticle saveArticle (@RequestBody NewsArticle article) {
-        articleService.saveArticle(article);
-        return article;
-    }
-*/
+
+
     @GetMapping("/article/{id}")
     public String EditArticle(@PathVariable Long id, Model model) {
         model.addAttribute("article", articleService.getArticle(id));
@@ -36,21 +33,18 @@ public class ArticleController {
     }
 
     @PostMapping("/save")
-    public String saveArticle(@RequestParam String name, @RequestParam String category, @RequestParam String content, @RequestParam String reporterName, @RequestParam String reporterEmail, Model model) {
-        NewsArticle article = new NewsArticle();
-        article.setName(name);
-        article.setCategory(category);
-        article.setContent(content);
-        article.setReporterName(reporterName);
-        article.setReporterEmail(reporterEmail);
-        if (name.isEmpty() || category.isEmpty() || content.isEmpty() || reporterName.isEmpty() || !reporterEmail.contains("@")) {
+    public String saveArticle(@Validated @ModelAttribute("article") NewsArticle article, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
             model.addAttribute("error", "All fields are required and email must be valid.");
             return "new";
         }
-        articleService.saveArticle(article);
-        return "redirect:/";
-    }
 
+        // Save the article using the service
+        articleService.saveArticle(article);
+        return "redirect:/index";
     }
+}
+
+
 
 

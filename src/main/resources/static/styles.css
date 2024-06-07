@@ -1,34 +1,47 @@
-/* Navbar styles */
+/* styles.css */
+
+/* Base styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
 .navbar {
-    background-color: #c027c5; /* Light gray background */
-    padding: 10px 20px; /* Add some padding to the navbar */
-    border-radius: 5px; /* Add some border radius for a softer look */
+    background-color: #ffffff !important;
+    border-bottom: 2px solid #007bff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
-    font-size: 1.5rem; /* Larger font size for the brand */
-    font-weight: bold; /* Make the brand text bold */
-    color: #333; /* Darken the text color */
-    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    color: #007bff !important;
+    font-size: 1.75rem;
 }
 
-.navbar-brand:hover {
-    color: #555; /* Darken the text color on hover */
+.navbar-nav .nav-link {
+    color: #007bff !important;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    margin-right: 1rem;
 }
 
-.navbar-nav {
-    margin-left: auto; /* Push the nav items to the right */
+.navbar-nav .nav-link:hover {
+    color: #0056b3 !important;
+    background-color: rgba(0, 123, 255, 0.1);
+    border-radius: 4px;
 }
 
-.navbar-nav .nav-item {
-    margin-right: 15px; /* Add some margin between nav items */
+.navbar-toggler {
+    border: none;
 }
 
-.nav-link {
-    color: #333; /* Darken the text color */
-    text-decoration: none; /* Remove underline */
+.navbar-toggler-icon {
+    color: #007bff;
 }
 
-.nav-link:hover {
-    color: #007bff; /* Change text color on hover */
+.main-content {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0  , 0.1);
 }
