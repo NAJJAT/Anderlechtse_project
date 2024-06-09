@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Article Details</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -28,7 +27,7 @@
 <main class="container mt-5">
     <h1>Article Details</h1>
     <div>
-        <h2 th:text="${article.name}">Article Title</h2>
+        <p> <strong>TitleName:</strong> <span th:text="${article.name}">Article Title</span></p>
         <p><strong>Category:</strong> <span th:text="${article.category}">Category</span></p>
         <p><strong>Content:</strong></p>
         <p th:text="${article.content}">Content</p>

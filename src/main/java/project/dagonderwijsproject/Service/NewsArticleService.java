@@ -26,4 +26,6 @@ public class NewsArticleService {
     public NewsArticle getArticle(Long id) {
         return repository.findById(id).orElse(null);
     }
+
+
 }

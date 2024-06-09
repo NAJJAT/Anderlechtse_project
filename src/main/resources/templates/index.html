@@ -41,7 +41,8 @@
       <td th:text="${article.name}">Article Title</td>
       <td th:text="${article.reporterName}">Reporter Name</td>
       <td><a th:href="@{'/details/' + ${article.id}}">View Details</a></td>
-      <td><a th:href="@{'/edit/' + ${article.id}}" class="btn btn-primary">Edit</a><td>
+      <td><a th:href="@{'/edit/' + ${article.id}}" class="btn btn-primary">Edit</a></td>
+
 
     </tr>
     </tbody>
