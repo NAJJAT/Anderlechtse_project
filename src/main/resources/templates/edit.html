@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Article</title>
+    <link rel="stylesheet" th:href="@{Edit.css}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Anderlechtse Gazette</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/new">New</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main class="container mt-5">
+    <h1>Edit Article</h1>
+    <form th:action="@{/edit/{id}}" th:object="${article}" method="post">
+        <div class="form-group">
+            <label for="name">Title</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" required>
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" class="form-control" id="category" th:field="*{category}" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="content" th:field="*{content}" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="reporterName">Reporter Name</label>
+            <input type="text" class="form-control" id="reporterName" th:field="*{reporterName}" required>
+        </div>
+        <div class="form-group">
+            <label for="reporterEmail">Reporter Email</label>
+            <input type="email" class="form-control" id="reporterEmail" th:field="*{reporterEmail}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+    <div th:if="${error}" class="alert alert-danger mt-3" th:text="${error}">Error message here</div>
+</main>
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        <span class="text-muted">&copy; 2024 Anderlechtse Gazette</span>
+    </div>
+</footer>
+</body>
+</html>

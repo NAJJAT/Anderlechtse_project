@@ -42,7 +42,35 @@ public class ArticleController {
         articleService.saveArticle(article);
         return "redirect:/index";
     }
+
+    @GetMapping("/details/{id}")
+    public String viewArticleDetails(@PathVariable Long id, Model model) {
+        NewsArticle article = articleService.getArticleById(id);
+        if (article == null) {
+            return "error"; // handle article not found
+        }
+        model.addAttribute("article", article);
+        return "details"; // view name to display article details
+    }
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        NewsArticle existingarticle = articleService.getArticleById(id);
+        existingarticle.setName(existingarticle.getName());
+        existingarticle.setContent(existingarticle.getCategory());
+        existingarticle.setContent(existingarticle.getContent());
+        existingarticle.setReporterName(existingarticle.getReporterName());
+        existingarticle.setReporterEmail(existingarticle.getReporterEmail());
+
+        if (existingarticle == null) {
+            model.addAttribute("error", "Article not found");
+            return "error"; // You should have an error.html template to handle this
+        }
+        model.addAttribute("article", existingarticle);
+        return "edit"; // The Thymeleaf template for editing
+    }
+
 }
+
 
 
 
