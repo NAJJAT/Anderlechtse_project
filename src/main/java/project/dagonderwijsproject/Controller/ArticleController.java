@@ -38,7 +38,6 @@ public class ArticleController {
             model.addAttribute("error", "All fields are required and email must be valid.");
             return "new";
         }
-
         // Save the article using the service
         articleService.saveArticle(article);
         return "redirect:/index";

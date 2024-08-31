@@ -2,18 +2,18 @@ package project.dagonderwijsproject.Security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.stereotype.Component;
-import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @Configuration
-public class config  extends WebSecurityConfigurerAdapter  {
+public class SecurityConfiguration  {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -26,7 +26,7 @@ public class config  extends WebSecurityConfigurerAdapter  {
                 })
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/") // Redirect to /index after successful login
+                        .defaultSuccessUrl("/index", true)
                         .permitAll()
                 )
                 .logout(logout -> logout
@@ -34,6 +34,15 @@ public class config  extends WebSecurityConfigurerAdapter  {
                 );
         return http.build();
     }
+            @Bean
+            public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
+                UserDetails user = User.builder()
+                        .username("user")
+                        .password(passwordEncoder.encode("password"))
+                        .roles("USER")
+                        .build();
+                return new InMemoryUserDetailsManager(user);
+            }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
